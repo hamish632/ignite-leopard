@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IGNITE LEOPARD — Electric Performance</title>
+<style>
+:root{--lime:#caff00;--red:#ff2028;--black:#050505;--card:#0d0d0d;--line:#282828;--muted:#8b8b8b;--white:#f5f5f2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1240px,calc(100% - 48px));margin:auto}
+nav{height:76px;position:fixed;z-index:20;inset:0 0 auto;background:rgba(5,5,5,.88);backdrop-filter:blur(15px);border-bottom:1px solid #222}
+.nav{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{font-size:20px;font-weight:950;font-style:italic;letter-spacing:2px}.logo span{color:var(--lime)}
+.links{display:flex;gap:32px;font-size:10px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#aaa}.links a:hover{color:var(--lime)}
+.navbtn,.btn{border:1px solid var(--lime);padding:11px 16px;font-size:10px;font-weight:950;letter-spacing:1px;text-transform:uppercase}.navbtn:hover{background:var(--lime);color:#000}
+
+.hero{padding-top:76px;min-height:700px;background:#050505;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:.7fr 1.3fr;min-height:620px}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:60px 30px 60px 0;position:relative;z-index:2}
+.eyebrow{color:var(--lime);font-size:10px;font-weight:950;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(65px,8vw,112px);line-height:.8;letter-spacing:-6px;margin:22px 0 28px;text-transform:uppercase}h1 span{color:transparent;-webkit-text-stroke:1px #aaa}
+.hero-copy p{max-width:500px;color:#aaa;line-height:1.7;font-size:14px}.actions{display:flex;gap:10px;margin-top:24px}.btn.primary{background:var(--lime);color:#000}.btn:not(.primary){border-color:#444}.btn:hover{transform:translateY(-2px)}
+.hero-photo{position:relative;min-height:620px;background:#111;overflow:hidden}.hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#050505 0%,transparent 32%,transparent 100%);pointer-events:none}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#090909}.statsgrid{display:grid;grid-template-columns:repeat(4,1fr)}.stat{padding:25px 20px;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat b{font-size:29px}.stat span{display:block;color:#777;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;margin-top:5px}
+
+section{padding:90px 0}.head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:35px}.head h2{font-size:52px;line-height:.9;letter-spacing:-4px;text-transform:uppercase;margin:8px 0 0}.head p{max-width:490px;color:#888;line-height:1.65;font-size:13px}
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.model{background:linear-gradient(150deg,#121212,#080808);border:1px solid var(--line);padding:22px;position:relative;overflow:hidden}.model.feature{border-color:var(--lime);box-shadow:0 0 35px rgba(202,255,0,.035)}.model .num{color:#666;font-size:9px;letter-spacing:2px}.model h3{font-size:29px;margin:14px 0 3px;letter-spacing:-1.5px}.mission{color:var(--lime);font-size:9px;font-weight:900;letter-spacing:1.4px;text-transform:uppercase}.model img{width:100%;height:210px;object-fit:cover;margin:18px 0;filter:saturate(.9)}.model.feature img{object-position:center 52%}.price{font-size:21px;font-weight:950;margin-bottom:16px}.price small{color:#777;font-size:9px}.rows{border-top:1px solid #222}.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #202020;font-size:11px}.row span{color:#777;text-align:right}.details{display:inline-block;margin-top:16px;border:1px solid #444;padding:10px 13px;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase}.feature .details{background:var(--lime);color:#000;border-color:var(--lime)}
+
+.pro{padding-top:30px}.pro-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:12px}.pro-copy{background:#090909;border:1px solid var(--line);padding:34px}.pro-copy .red{color:var(--red);font-size:10px;font-weight:950;letter-spacing:2px;text-transform:uppercase}.pro-copy h2{font-size:44px;line-height:.9;letter-spacing:-3px;margin:13px 0 18px}.pro-copy p{color:#aaa;font-size:12px;line-height:1.65}.checks{margin-top:22px}.check{padding:11px 0;border-bottom:1px solid #222;font-size:11px}.check:before{content:"✓";display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;border:1px solid var(--red);border-radius:50%;color:var(--red);margin-right:9px}.pro-image{background:#0b0b0b;min-height:510px}.pro-image img{width:100%;height:100%;object-fit:cover;object-position:center}
+.side-images{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.side-images img{width:100%;height:250px;object-fit:cover}
+
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tech{background:#111;border:1px solid #222;padding:22px;min-height:155px}.tech b{color:var(--lime);font-size:10px}.tech h4{margin:14px 0 7px}.tech p{margin:0;color:#777;font-size:11px;line-height:1.6}
+
+.cta{padding:0 0 80px}.cta-box{background:var(--lime);color:#050505;padding:48px;position:relative;overflow:hidden}.cta-box h2{font-size:57px;line-height:.85;letter-spacing:-4px;margin:0 0 16px}.cta-box p{max-width:550px;font-size:12px;line-height:1.6}.blackbtn{display:inline-block;background:#050505;color:#fff;padding:13px 18px;font-size:9px;font-weight:950;letter-spacing:1px;text-transform:uppercase}
+footer{border-top:1px solid #222;padding:25px 0;color:#666;font-size:9px;letter-spacing:1px;text-transform:uppercase}.foot{display:flex;justify-content:space-between}
+
+@media(max-width:900px){.links{display:none}.hero-grid,.pro-grid{grid-template-columns:1fr}.hero-copy{padding:55px 0}.hero-photo{min-height:520px}.models{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.statsgrid{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.head{display:block}.head p{margin-top:18px}}
+@media(max-width:560px){.wrap{width:calc(100% - 32px)}h1{font-size:62px;letter-spacing:-4px}.hero-photo{min-height:380px}.statsgrid{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.head h2{font-size:42px}.features{grid-template-columns:1fr}.cta-box{padding:32px}.cta-box h2{font-size:43px}.foot{display:block}.foot span{display:block;margin:7px 0}.side-images{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav">
+  <a class="logo" href="#top">IGNITE <span>LEOPARD</span></a>
+  <div class="links"><a href="#models">Models</a><a href="#performance">Performance</a><a href="#technology">Technology</a><a href="#about">About</a></div>
+  <a class="navbtn" href="#contact">Get in touch</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="hero-grid">
+  <div class="hero-copy wrap">
+    <div class="eyebrow">Electric performance / 2026</div>
+    <h1>Ride<br><span>Without</span><br>Limits.</h1>
+    <p>A new generation of electric dirt bikes. Brutal acceleration, lightweight chassis and intelligent control — built for riders who want more.</p>
+    <div class="actions"><a class="btn primary" href="#models">Explore models</a><a class="btn" href="#performance">See specs</a></div>
+  </div>
+  <div class="hero-photo"><img src="assets/hero.png" alt="Ignite Leopard XE Pro S promotional bike"></div>
+</div></header>
+
+<div class="stats"><div class="wrap statsgrid">
+  <div class="stat"><b>25 kW</b><span>Peak power / Pro S</span></div>
+  <div class="stat"><b>170 km/h</b><span>Top speed / Pro S</span></div>
+  <div class="stat"><b>67–72 kg</b><span>Weight / Pro S</span></div>
+  <div class="stat"><b>74V 60Ah</b><span>Battery option</span></div>
+</div></div>
+
+<section id="models"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">01 / The lineup</div><h2>Three ways<br>to go fast.</h2></div><p>From a nimble trail machine to a high-speed performance e-moto and road-focused dual-sport, the XE range is built around different kinds of riding.</p></div>
+  <div class="models">
+    <article class="model"><div class="num">01 — XE SPORT</div><h3>XE Sport</h3><div class="mission">Light trail / entry performance</div><img src="assets/xe-sport.png" alt="Ignite Leopard bike"><div class="price">$4,499 <small>– $5,299 AUD</small></div><div class="rows"><div class="row"><b>8 kW</b><span>Peak power</span></div><div class="row"><b>85 km/h</b><span>Top speed</span></div><div class="row"><b>56–60 kg</b><span>Weight</span></div></div><a class="details" href="#contact">View details</a></article>
+    <article class="model feature"><div class="num">02 — XE PRO S</div><h3>XE Pro S</h3><div class="mission">Performance / motocross</div><img src="assets/xe-pro-s.png" alt="Ignite Leopard XE Pro S"><div class="price">$6,599 <small>– $8,000 AUD</small></div><div class="rows"><div class="row"><b>25 kW</b><span>Peak power</span></div><div class="row"><b>170 km/h</b><span>Top speed</span></div><div class="row"><b>67–72 kg</b><span>Weight</span></div></div><a class="details" href="#performance">View details</a></article>
+    <article class="model"><div class="num">03 — XE TOURER</div><h3>XE Tourer</h3><div class="mission">Dual-sport / adventure</div><img src="assets/pro-s.png" alt="Ignite Leopard bike detail"><div class="price">$9,499 <small>– $11,200 AUD</small></div><div class="rows"><div class="row"><b>35 kW</b><span>Peak power</span></div><div class="row"><b>145 km/h</b><span>Limited top speed</span></div><div class="row"><b>115–125 kg</b><span>Weight</span></div></div><a class="details" href="#contact">View details</a></article>
+  </div>
+</div></section>
+
+<section class="pro" id="performance"><div class="wrap">
+  <div class="pro-grid">
+    <div class="pro-copy"><div class="red">XE Pro S</div><h2>More Than a<br>Small E-Moto.</h2><p>Built for riders who want more than a Surron/Talaria-sized bike. The XE Pro S gives you a bigger, more capable trail platform with full-size 21/18 wheels and Ultra Bee suspension.</p><div class="checks"><div class="check">Bigger, more planted ride feel</div><div class="check">21/18 full-size trail setup</div><div class="check">Ultra Bee suspension</div><div class="check">Built for serious trail riding</div></div></div>
+    <div class="pro-image"><img src="assets/pro-s.png" alt="Ignite Leopard XE Pro S"></div>
+  </div>
+  <div class="side-images"><img src="assets/pro-s-detail.png" alt="Ignite Leopard motorcycle detail"><img src="assets/hero.png" alt="Ignite Leopard XE Pro S promotional image"></div>
+</div></section>
+
+<section id="technology"><div class="wrap">
+  <div class="head"><div><div class="eyebrow">02 / Technology</div><h2>Smart by<br>design.</h2></div><p>Control the delivery, monitor the machine and keep your focus on the trail.</p></div>
+  <div class="features"><div class="tech"><b>01</b><h4>Smart power control</h4><p>Tune power delivery, throttle sensitivity and speed limits around the ride.</p></div><div class="tech"><b>02</b><h4>Full-colour TFT</h4><p>Keep battery, speed and system information visible at a glance.</p></div><div class="tech"><b>03</b><h4>Rider modes</h4><p>Different delivery profiles help adapt the bike to changing conditions.</p></div><div class="tech"><b>04</b><h4>Keyless security</h4><p>Modern security features make everyday ownership easier.</p></div></div>
+</div></section>
+
+<section id="about"><div class="wrap"><div class="head"><div><div class="eyebrow">03 / Engineering</div><h2>Built around<br>the ride.</h2></div><p>Performance figures and hardware details for the XE Pro S platform.</p></div><div class="rows" style="background:#0d0d0d;border:1px solid #242424;padding:18px 28px"><div class="row">Motor <span>25 kW brushless electric</span></div><div class="row">Wheel torque <span>500–600 Nm</span></div><div class="row">Range <span>~80 km aggressive / ~160 km low-speed</span></div><div class="row">Fork <span>KKE 37 mm USD / 202 mm stroke</span></div><div class="row">Rear shock <span>Adjustable / 210 mm stroke</span></div><div class="row">Brakes <span>220 mm hydraulic discs</span></div><div class="row">Wheels <span>21/18 Enduro</span></div></div></div></section>
+
+<section class="cta" id="contact"><div class="wrap"><div class="cta-box"><h2>THE NEXT RIDE<br>STARTS HERE.</h2><p>Choose the machine that fits your riding. Explore the range, compare the numbers and build your own electric experience.</p><a class="blackbtn" href="mailto:info@igniteleopard.example">Contact Ignite Leopard</a></div></div></section>
+
+<footer><div class="wrap foot"><span>© 2026 Ignite Leopard</span><span>XE Sport · XE Pro S · XE Tourer</span><span>Electric / Performance / Adventure</span></div></footer>
+</body></html>
