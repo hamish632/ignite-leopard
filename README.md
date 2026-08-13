@@ -1,7 +1,29 @@
 # ignite-leopard
-file:///Users/44948/Downloads/ignite-leopard-final-website-v7-2/index.html
-At Ignite Leopard, we create the catalyst for your next adventure. Inspired by the speed, stealth, and unstoppable power of nature’s ultimate apex predator, we engineer premium electric bikes designed to shatter boundaries. We do not just build rides; we ignite the thrill of the hunt on two wheels, transforming daily transportation into an exhilarating, high-performance experience.
-Our philosophy fuses raw, predatory power with sleek, modern design. Every Ignite Leopard e-bike is a masterpiece of aggressive styling and precision engineering, crafted for those who refuse to blend into the background. Featuring lightweight, aircraft-grade frames, hyper-responsive smart technology, and high-torque motors, our bikes deliver instantaneous acceleration and unmatched long-range endurance. Whether you are slicing through dense city gridlock or conquering steep, unforgiving backcountry trails, our intelligent drive systems adapt seamlessly to your environment. We give you the absolute confidence to dominate any terrain.
-We believe in fierce, sustainable freedom. As urban environments grow more congested, Ignite Leopardoffers an escape velocity from traffic, fuel costs, and carbon footprints. Our ultra-reliable, fast-charging battery technology ensures you spend less time plugged into a wall and more time exploring the wild. Every component—from our hydraulic braking systems to our integrated puncture-resistant tyres—is rigorously tested to withstand the elements and deliver a smooth, quiet, yet terrifyingly powerful ride.
-We build machines that demand attention, respect the planet, and deliver a rush of pure adrenaline with every single twist of the throttle. We are here to redefine modern mobility for the fearless explorer, the daily commuter, and the weekend warrior alike.
-You no longer have to settle for the mundane. It is time to upgrade your journey, claim your territory, and experience the world with predator-level agility and speed. Unleash your drive, embrace the thrill of unstoppable performance, and command the road ahead. Join the movement and ride Ignite Leopard.
+from pathlib import Path
+import shutil, zipfile
+
+site = Path("/mnt/data/ignite-leopard-final-site")
+assets = site / "assets"
+assets.mkdir(parents=True, exist_ok=True)
+
+src = Path("/mnt/data/Screenshot 2026-08-12 at 11.00.12 pm(2).png")
+dst = assets / "xe-sport.png"
+shutil.copy2(src, dst)
+
+index = site / "index.html"
+html = index.read_text(encoding="utf-8")
+
+# XE Sport card now uses the newly uploaded image.
+old = '<article class="model"><div class="num">01 — XE SPORT</div><h3>XE Sport</h3><div class="mission">Light trail / entry performance</div><img src="assets/pro-s.png"'
+new = '<article class="model"><div class="num">01 — XE SPORT</div><h3>XE Sport</h3><div class="mission">Light trail / entry performance</div><img src="assets/xe-sport.png"'
+html = html.replace(old, new)
+
+index.write_text(html, encoding="utf-8")
+
+zip_path = Path("/mnt/data/ignite-leopard-final-website-v7.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    for p in site.rglob("*"):
+        if p.is_file():
+            z.write(p, p.relative_to(site))
+
+print(zip_path)
